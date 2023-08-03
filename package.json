@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/thomas-beguin/TwitterClone/issues"
   },
-  "homepage": "https://github.com/thomas-beguin/TwitterClone#readme"
+  "homepage": "https://github.com/thomas-beguin/TwitterClone#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
