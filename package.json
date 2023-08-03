@@ -1,0 +1,20 @@
+{
+  "name": "twitterclone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thomas-beguin/TwitterClone.git"
+  },
+  "author": "tbeguin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thomas-beguin/TwitterClone/issues"
+  },
+  "homepage": "https://github.com/thomas-beguin/TwitterClone#readme"
+}
