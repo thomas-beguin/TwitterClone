@@ -3,15 +3,16 @@ const app = express();
 const port = 3003;
 const middleware = require('./middleware');
 const path = require('path')
+const bodyParser = require('body-parser');
+const mongoose = require('./database');
 
 const server = app.listen(port, () => { console.log(`Listening on port: ${port}`)});
 
 app.set("view engine", "pug");
-// When you need a view, go to the views folder
-app.set("views", "views");
+app.set("views", "views"); // When you need a view, go to the views folder
 
-// Everything in this file is using as a static file
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public"))); // Everything in this file is using as a static file
+app.use(bodyParser.urlencoded({extended: false}));
 
 const loginRoute    = require('./routes/loginRoutes');
 const registerRoute = require('./routes/registerRoutes');
