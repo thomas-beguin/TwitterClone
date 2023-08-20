@@ -3,6 +3,7 @@ const app = express();
 const router = express.Router();
 const bodyParser = require('body-parser');
 const User = require('../schemas/UserSchema');
+const bcrypt = require('bcrypt');
 
 app.set("view engine", "pug");
 app.set("views", "views"); // When you need a view, go to the views folder
@@ -23,6 +24,7 @@ router.post("/", async (req, res, next) => {
   const payload = req.body;
 
   if (firstName && lastName && username && email && password) {
+
     const user = await User.findOne({
       $or : [
           { username: username },
@@ -37,8 +39,19 @@ router.post("/", async (req, res, next) => {
 
     if (user === null) {
       // No user found
-    } else {
+
+      const data = req.body;
+      data.password = await bcrypt.hash(password, 10);
+
+      User.create(data)
+      .then((user) => {
+        req.session.user = user;
+        return res.redirect("/");
+      })
+    }
+    else {
       // User found
+
       if (email == user.email) {
         payload.errorMessage = "Email already in use";
       }
